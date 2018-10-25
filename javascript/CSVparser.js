@@ -13,7 +13,8 @@ uploadButton.addEventListener("click", e => {
 csvInput.addEventListener("change", e => {
   //valid CSV file 
   if (csvInput.value){
-    validateCSV(csvInput)
+    validateCSV(csvInput);
+    csvToArray(csvInput.files);
   } 
  else {
     filename.innerHTML = "No file chosen";
@@ -31,8 +32,16 @@ function validateCSV(upload){
   }
 }
 
-function csvToArray(){
-  
+function csvToArray(upload){
+  const fileReader = new FileReader();
+  fileReader.readAsText(upload);
+  fileReader.onload = loadHander;
+  fileReader.onerror = errorHandler;
+}
+
+function loadHander(){
+  const csv = event.target.result;
+  console.log(csv);
 }
 
 function arrayToRelevantStrings(){
@@ -41,5 +50,9 @@ function arrayToRelevantStrings(){
 }
 
 function stringToWorkoutObj(){
+
+}
+
+function errorHandler(){
 
 }

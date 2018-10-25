@@ -23,7 +23,6 @@ function writeUserData(userID, name){
   });
 }
 
-writeUserData(1, David);
 
 
 
