@@ -1,34 +1,35 @@
 
 
 //buttons for upload
-const csvInput = document.getElementById("csvFile");
+const fileInput = document.getElementById("csvFile");
 const uploadButton = document.getElementById("uploadCSV");
-const filename = document.getElementById("fileName");
+const fileNameLabel = document.getElementById("fileNameLabel");
+
 
 uploadButton.addEventListener("click", e => {
-  csvInput.click();
+  fileInput.click();
 });
 
 //listen for a click and
-csvInput.addEventListener("change", e => {
+fileInput.addEventListener("change", e => {
   //valid CSV file 
-  if (csvInput.value){
-    validateCSV(csvInput);
-    csvToArray(csvInput.files);
+  if (fileInput.value){
+    validateCSV(fileInput);
+    csvToArray(fileInput.files[0]);
   } 
  else {
-    filename.innerHTML = "No file chosen";
+    fileNameLabel.innerHTML = "No file chosen";
   }
 });
 
 
-function validateCSV(upload){
-  const fileName = upload.value;
+function validateCSV(input){
+  const fileName = input.value;
   const fileExt = fileName.split(".").pop().toLowerCase();
   if (fileExt === "csv"){
-    filename.innerText = csvInput.value.match( /[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+    fileNameLabel.innerText = fileInput.value.match( /[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
   } else {
-    filename.innerText = "Not a CSV file";
+    fileNameLabel.innerText = "Not a CSV file";
   }
 }
 
