@@ -70,27 +70,35 @@ function processData(csv) {
       lines.push(tarr);
   }
 //console.log(lines);
-arrayToStrings(lines);
+arrayToWorkoutArrays(lines);
 }
 
-function arrayToStrings(array){
+function arrayToWorkoutArrays(array){
   console.log(array[14]);
   console.log(array[12]);
 
   //each array entry contains another array of 1 entry, this has to be taken out and split
   let workoutOverviewLabels = array[12];
   workoutOverviewLabels = workoutOverviewLabels[0].split(",");
-  for (x in workoutOverviewLabels){
+  /* for (x in workoutOverviewLabels){
     console.log(workoutOverviewLabels[x]);
-  }
+  } */
 
   let workoutOverview = array[14];
   workoutOverview = workoutOverview[0].split(",");
-  for (x in workoutOverview){
+  /* for (x in workoutOverview){
     console.log(workoutOverview[x]);
+  } */
+
+  printWorkout(workoutOverviewLabels, workoutOverview);
+  
+}
+
+function printWorkout(labels, workoutAverages){
+  console.log("Your workout: ")
+  for(x in labels){
+    console.log(labels[x] + " : " + workoutAverages[x]);
   }
-
-
 
 }
 
