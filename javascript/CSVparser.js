@@ -69,21 +69,32 @@ function processData(csv) {
       }
       lines.push(tarr);
   }
-//console.log(lines);
-arrayToWorkoutOverview(lines);
+  //console.log(lines);
+  arrayToWorkoutOverview(lines);
+
 }
 
 function arrayToWorkoutOverview(array){
 
   //each array entry contains another array of 1 entry, this has to be taken out and split
   let workoutOverviewLabels = array[12];
-  //workoutOverviewLabels = workoutOverviewLabels[0].split(",");
-
   let workoutOverview = array[14];
-  //workoutOverview = workoutOverview[0].split(",");
-
+  const numberOfIntervals = workoutOverview[0];
 
   printWorkoutOverview(workoutOverviewLabels, workoutOverview);
+  arrayToIntervalOverview(array, numberOfIntervals);
+
+}
+
+function arrayToIntervalOverview(array, intervalCount){
+  const intervals = [];
+  for(let i = 0; i < intervalCount; i++){
+    intervals[i] = array[i + 20];
+  }
+  for(x in intervals){
+    console.log(intervals[x]);
+  }  
+
   
 }
 
@@ -92,8 +103,9 @@ function printWorkoutOverview(labels, workoutAverages){
   for(x in labels){
     console.log(labels[x] + " : " + workoutAverages[x]);
   }
-
 }
+
+
 
 function stringToWorkoutObj(){
 
