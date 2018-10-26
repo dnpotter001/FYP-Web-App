@@ -62,7 +62,7 @@ function processData(csv) {
   
   const lines = [];
   for (let i=0; i<allTextLines.length; i++) {
-      let data = allTextLines[i].split(';');
+      let data = allTextLines[i].split(',');
       const tarr = [];
       for (let j=0; j<data.length; j++) {
         tarr.push(data[j]);
@@ -70,31 +70,24 @@ function processData(csv) {
       lines.push(tarr);
   }
 //console.log(lines);
-arrayToWorkoutArrays(lines);
+arrayToWorkoutOverview(lines);
 }
 
-function arrayToWorkoutArrays(array){
-  console.log(array[14]);
-  console.log(array[12]);
+function arrayToWorkoutOverview(array){
 
   //each array entry contains another array of 1 entry, this has to be taken out and split
   let workoutOverviewLabels = array[12];
-  workoutOverviewLabels = workoutOverviewLabels[0].split(",");
-  /* for (x in workoutOverviewLabels){
-    console.log(workoutOverviewLabels[x]);
-  } */
+  //workoutOverviewLabels = workoutOverviewLabels[0].split(",");
 
   let workoutOverview = array[14];
-  workoutOverview = workoutOverview[0].split(",");
-  /* for (x in workoutOverview){
-    console.log(workoutOverview[x]);
-  } */
+  //workoutOverview = workoutOverview[0].split(",");
 
-  printWorkout(workoutOverviewLabels, workoutOverview);
+
+  printWorkoutOverview(workoutOverviewLabels, workoutOverview);
   
 }
 
-function printWorkout(labels, workoutAverages){
+function printWorkoutOverview(labels, workoutAverages){
   console.log("Your workout: ")
   for(x in labels){
     console.log(labels[x] + " : " + workoutAverages[x]);
