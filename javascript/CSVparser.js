@@ -6,12 +6,16 @@ const uploadButton = document.getElementById("uploadCSV");
 const fileNameLabel = document.getElementById("fileNameLabel");
 const generateButton = document.getElementById("generateTable");
 
+//section for table generation 
+const tableArea = document.getElementById("tables");
+
+
 //global variable
-let 
+let
   workoutOverviewLabels,
-  workoutOverview, 
-  numberOfIntervals, 
-  intervalsoverviewLabels, 
+  workoutOverview,
+  numberOfIntervals,
+  intervalsoverviewLabels,
   intervalsOverview;
 
 uploadButton.addEventListener("click", e => {
@@ -21,29 +25,29 @@ uploadButton.addEventListener("click", e => {
 //listen for a click and
 fileInput.addEventListener("change", e => {
   //valid CSV file 
-  if (fileInput.value){
+  if (fileInput.value) {
     validateCSV(fileInput);
-  } 
- else {
+  }
+  else {
     fileNameLabel.innerHTML = "No file chosen";
   }
 });
 
 generateButton.addEventListener("click", e => {
-  if( fileInput.value){
-    overviewTable();
-    intervalTable();
+  if (fileInput.value) {
+    generateTable(workoutOverview, workoutOverviewLabels);
+    generateTable(intervalsOverview, intervalsoverviewLabels);
   } else {
     fileNameLabel.innerText = "Upload a CSV first";
   }
 })
 
 //takes input box, checks if the file is a csv, then changes the label
-function validateCSV(input){
+function validateCSV(input) {
   const fileName = input.value;
   const fileExt = fileName.split(".").pop().toLowerCase();
-  if (fileExt === "csv"){
-    fileNameLabel.innerText = fileInput.value.match( /[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+  if (fileExt === "csv") {
+    fileNameLabel.innerText = fileInput.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
 
     //calls the next function
     csvToArray(input.files[0]);
@@ -53,7 +57,7 @@ function validateCSV(input){
   }
 }
 
-function csvToArray(upload){
+function csvToArray(upload) {
   //creates a file reader that reads csv as text...
   const fileReader = new FileReader();
   fileReader.readAsText(upload);
@@ -63,7 +67,7 @@ function csvToArray(upload){
   fileReader.onerror = errorHandler;
 }
 
-function loadHander(){
+function loadHander() {
   //result of the last function is handed to the const csv,
   const csv = event.target.result;
   //csv is then printed into the log
@@ -76,22 +80,22 @@ function loadHander(){
 function processData(csv) {
   //splits the file into lines using a regular expression
   let allTextLines = csv.split(/\r\n|\n/);
-  
+
   const lines = [];
-  for (let i=0; i<allTextLines.length; i++) {
-      let data = allTextLines[i].split(',');
-      const tarr = [];
-      for (let j=0; j<data.length; j++) {
-        tarr.push(data[j]);
-      }
-      lines.push(tarr);
+  for (let i = 0; i < allTextLines.length; i++) {
+    let data = allTextLines[i].split(',');
+    const tarr = [];
+    for (let j = 0; j < data.length; j++) {
+      tarr.push(data[j]);
+    }
+    lines.push(tarr);
   }
   //console.log(lines);
   arrayToWorkoutOverview(lines);
 
 }
 
-function arrayToWorkoutOverview(array){
+function arrayToWorkoutOverview(array) {
 
   //each array entry contains another array of 1 entry, this has to be taken out and split
   workoutOverviewLabels = array[12];
@@ -103,39 +107,77 @@ function arrayToWorkoutOverview(array){
 
 }
 
-function arrayToIntervalOverview(array, intervalCount){
+function arrayToIntervalOverview(array, intervalCount) {
+  intervalsoverviewLabels = array[18];
   intervalsOverview = [];
-  for(let i = 0; i < intervalCount; i++){
+  for (let i = 0; i < intervalCount; i++) {
     intervalsOverview[i] = array[i + 20];
   }
-  for(x in intervalsOverview){
+  for (x in intervalsOverview) {
     console.log(intervalsOverview[x]);
-  }  
+  }
 
-  
+
 }
 
-function printWorkoutOverview(labels, workoutAverages){
+function printWorkoutOverview(labels, workoutAverages) {
   console.log("Your workout: ")
-  for(x in labels){
+  for (x in labels) {
     console.log(labels[x] + " : " + workoutAverages[x]);
   }
 }
 
-function overviewTable(){
+function generateTable(data, label) {
+  let table = document.createElement("table");
+  let tableRow = document.createElement("tr");
+
+  for (x in label) {
+    console.log(label[x]);
+    let tableCell = document.createElement("td");
+    tableCell.appendChild(document.createTextNode(label[x]));
+    tableRow.appendChild(tableCell);
+  }
+
+  table.appendChild(tableRow);
+  tableRow = document.createElement("tr");
+
+  for (x in data) {
+    let internalData = data[x];
+
+    if (internalData.constructor === Array) {
+      for (y in internalData) {
+        console.log(internalData[y]);
+        let tableCell = document.createElement("td");
+        tableCell.appendChild(document.createTextNode(internalData[y]));
+        tableRow.appendChild(tableCell);
+      }
+      table.appendChild(tableRow);
+      tableRow = document.createElement("tr");
+    }
+    else {
+      console.log(data[x]);
+      let tableCell = document.createElement("td");
+      tableCell.appendChild(document.createTextNode(data[x]));
+      tableRow.appendChild(tableCell);
+    }
+    table.appendChild(tableRow);
+
+  }
+
+  tableArea.appendChild(table);
 
 }
 
-function intervalTable(){
+function intervalTable() {
 
 }
 
 
 
-function stringToWorkoutObj(){
+function stringToWorkoutObj() {
 
 }
 
-function errorHandler(){
+function errorHandler() {
   fileNameLabel.innerText = "Error loading CSV...";
 }
