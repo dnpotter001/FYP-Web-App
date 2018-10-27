@@ -4,7 +4,15 @@
 const fileInput = document.getElementById("csvFile");
 const uploadButton = document.getElementById("uploadCSV");
 const fileNameLabel = document.getElementById("fileNameLabel");
+const generateButton = document.getElementById("generateTable");
 
+//global variable
+let 
+  workoutOverviewLabels,
+  workoutOverview, 
+  numberOfIntervals, 
+  intervalsoverviewLabels, 
+  intervalsOverview;
 
 uploadButton.addEventListener("click", e => {
   fileInput.click();
@@ -20,6 +28,15 @@ fileInput.addEventListener("change", e => {
     fileNameLabel.innerHTML = "No file chosen";
   }
 });
+
+generateButton.addEventListener("click", e => {
+  if( fileInput.value){
+    overviewTable();
+    intervalTable();
+  } else {
+    fileNameLabel.innerText = "Upload a CSV first";
+  }
+})
 
 //takes input box, checks if the file is a csv, then changes the label
 function validateCSV(input){
@@ -77,9 +94,9 @@ function processData(csv) {
 function arrayToWorkoutOverview(array){
 
   //each array entry contains another array of 1 entry, this has to be taken out and split
-  let workoutOverviewLabels = array[12];
-  let workoutOverview = array[14];
-  const numberOfIntervals = workoutOverview[0];
+  workoutOverviewLabels = array[12];
+  workoutOverview = array[14];
+  numberOfIntervals = workoutOverview[0];
 
   printWorkoutOverview(workoutOverviewLabels, workoutOverview);
   arrayToIntervalOverview(array, numberOfIntervals);
@@ -87,12 +104,12 @@ function arrayToWorkoutOverview(array){
 }
 
 function arrayToIntervalOverview(array, intervalCount){
-  const intervals = [];
+  intervalsOverview = [];
   for(let i = 0; i < intervalCount; i++){
-    intervals[i] = array[i + 20];
+    intervalsOverview[i] = array[i + 20];
   }
-  for(x in intervals){
-    console.log(intervals[x]);
+  for(x in intervalsOverview){
+    console.log(intervalsOverview[x]);
   }  
 
   
@@ -103,6 +120,14 @@ function printWorkoutOverview(labels, workoutAverages){
   for(x in labels){
     console.log(labels[x] + " : " + workoutAverages[x]);
   }
+}
+
+function overviewTable(){
+
+}
+
+function intervalTable(){
+
 }
 
 
