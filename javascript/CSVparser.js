@@ -168,9 +168,6 @@ function generateTable(data, label) {
 
 }
 
-function intervalTable() {
-
-}
 
 
 
