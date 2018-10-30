@@ -11,12 +11,15 @@ const tableArea = document.getElementById("tables");
 
 
 //global variable
-let
-  workoutOverviewLabels,
-  workoutOverview,
-  numberOfIntervals,
-  intervalsoverviewLabels,
-  intervalsOverview;
+// let
+//   workoutOverviewLabels,
+//   workoutOverview,
+//   numberOfIntervals,
+//   intervalsoverviewLabels,
+//   intervalsOverview;
+
+let workout = {};
+
 
 uploadButton.addEventListener("click", e => {
   fileInput.click();
@@ -90,41 +93,21 @@ function processData(csv) {
     }
     lines.push(tarr);
   }
-  //console.log(lines);
-  arrayToWorkoutOverview(lines);
+  //send array of csv to constructor to produce workout object
+  workout = new Workout(lines);
 
 }
 
-function arrayToWorkoutOverview(array) {
-
-  //each array entry contains another array of 1 entry, this has to be taken out and split
-  workoutOverviewLabels = array[12];
-  workoutOverview = array[14];
-  numberOfIntervals = workoutOverview[0];
-
-  printWorkoutOverview(workoutOverviewLabels, workoutOverview);
-  arrayToIntervalOverview(array, numberOfIntervals);
-
-}
-
-function arrayToIntervalOverview(array, intervalCount) {
-  intervalsoverviewLabels = array[18];
-  intervalsOverview = [];
-  for (let i = 0; i < intervalCount; i++) {
-    intervalsOverview[i] = array[i + 20];
-  }
-  for (x in intervalsOverview) {
-    console.log(intervalsOverview[x]);
-  }
 
 
-}
+function printWorkoutOverview(workout) {
+  console.log(workout)
+  console.log(workout.getOverviewLabel());
+  console.log(workout.getOverview());
+  console.log(workout.getIntervalsLabels()); 
+  console.log(workout.getIntervals());
+  
 
-function printWorkoutOverview(labels, workoutAverages) {
-  console.log("Your workout: ")
-  for (x in labels) {
-    console.log(labels[x] + " : " + workoutAverages[x]);
-  }
 }
 
 function generateTable(data, label) {
@@ -169,30 +152,39 @@ function generateTable(data, label) {
 }
 
 
+function Workout(array) {
 
-function arraytoObject(array){
+  //add workout overview information to the object
+  this.workoutOverviewLabels = array[12];
+  this.workoutOverview = array[14];
+  this.numberOfIntervals = this.workoutOverview[0];
+
+  //adds interval information to obj
+  this.intervalsLabels = array[18];
+  this.intervals = [];
+  for (let i = 0; i < this.numberOfIntervals; i++) {
+    this.intervals[i] = array[i + 20];
+  }
+
+  //getters for obj
+  this.getOverview = function(){
+    return this.workoutOverview;
+  }
+  this.getOverviewLabel = function() {
+    return this.workoutOverviewLabels;
+  }
+  this.getIntervals = function(){
+    return this.intervals;
+  }
+  this.getIntervalsLabels = function(){
+    return this.intervalsLabels;
+  }
+
 
 }
 
-function createWorkoutObj(array){
-  let obj = {} ;
-  obj.wOL = array[12];
-  obj. = array[14];
-    numberOfIntervals = workoutOverview[0];
-  
-    printWorkoutOverview(workoutOverviewLabels, workoutOverview);
-    arrayToIntervalOverview(array, numberOfIntervals);
-  
-  
-    intervalsoverviewLabels = array[18];
-    intervalsOverview = [];
-    for (let i = 0; i < intervalCount; i++) {
-      intervalsOverview[i] = array[i + 20];
-    }
-    for (x in intervalsOverview) {
-      console.log(intervalsOverview[x]);
-    }
-  }
+
+
 
 
 function errorHandler() {
