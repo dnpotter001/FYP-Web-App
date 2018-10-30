@@ -1,20 +1,4 @@
 
-
-//buttons for upload
-const fileInput = document.getElementById("csvFile");
-const uploadButton = document.getElementById("uploadCSV");
-const fileNameLabel = document.getElementById("fileNameLabel");
-const generateButton = document.getElementById("generateTable");
-const push = document.getElementById("pushToFirebase");
-const pull = document.getElementById("PullFromFirebase");
-
-//section for table generation 
-const tableArea = document.getElementById("tables");
-
-//empty workout object created
-let workout = {};
-
-
 uploadButton.addEventListener("click", e => {
   fileInput.click();
 });
