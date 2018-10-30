@@ -170,10 +170,30 @@ function generateTable(data, label) {
 
 
 
-
-function stringToWorkoutObj() {
+function arraytoObject(array){
 
 }
+
+function createWorkoutObj(array){
+  let obj = {} ;
+  obj.wOL = array[12];
+  obj. = array[14];
+    numberOfIntervals = workoutOverview[0];
+  
+    printWorkoutOverview(workoutOverviewLabels, workoutOverview);
+    arrayToIntervalOverview(array, numberOfIntervals);
+  
+  
+    intervalsoverviewLabels = array[18];
+    intervalsOverview = [];
+    for (let i = 0; i < intervalCount; i++) {
+      intervalsOverview[i] = array[i + 20];
+    }
+    for (x in intervalsOverview) {
+      console.log(intervalsOverview[x]);
+    }
+  }
+
 
 function errorHandler() {
   fileNameLabel.innerText = "Error loading CSV...";
