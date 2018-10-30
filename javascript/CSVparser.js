@@ -99,6 +99,7 @@ function printWorkoutOverview(workout) {
   console.log(workout.getIntervalsLabels()); 
   console.log(workout.getIntervals());
   
+  
 
 }
 
