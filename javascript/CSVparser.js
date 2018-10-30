@@ -9,15 +9,7 @@ const generateButton = document.getElementById("generateTable");
 //section for table generation 
 const tableArea = document.getElementById("tables");
 
-
-//global variable
-// let
-//   workoutOverviewLabels,
-//   workoutOverview,
-//   numberOfIntervals,
-//   intervalsoverviewLabels,
-//   intervalsOverview;
-
+//empty workout object created
 let workout = {};
 
 
@@ -25,9 +17,8 @@ uploadButton.addEventListener("click", e => {
   fileInput.click();
 });
 
-//listen for a click and
+//listen for a click and checks if it is a csv
 fileInput.addEventListener("change", e => {
-  //valid CSV file 
   if (fileInput.value) {
     validateCSV(fileInput);
   }
@@ -36,10 +27,11 @@ fileInput.addEventListener("change", e => {
   }
 });
 
+//listens for clicks, uses generate table function to produce 
 generateButton.addEventListener("click", e => {
   if (fileInput.value) {
-    generateTable(workoutOverview, workoutOverviewLabels);
-    generateTable(intervalsOverview, intervalsoverviewLabels);
+    generateTable(workout.getOverview(), workout.getOverviewLabel());
+    generateTable(workout.getIntervals(), workout.getIntervalsLabels());
   } else {
     fileNameLabel.innerText = "Upload a CSV first";
   }
@@ -51,8 +43,8 @@ function validateCSV(input) {
   const fileExt = fileName.split(".").pop().toLowerCase();
   if (fileExt === "csv") {
     fileNameLabel.innerText = fileInput.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
-
-    //calls the next function
+    
+    //calls csv to array if csv is valid
     csvToArray(input.files[0]);
 
   } else {
@@ -70,31 +62,31 @@ function csvToArray(upload) {
   fileReader.onerror = errorHandler;
 }
 
+//csv load handers takes csv and passes it to the csv processor
 function loadHander() {
-  //result of the last function is handed to the const csv,
   const csv = event.target.result;
-  //csv is then printed into the log
-  //console.log(csv);
   processData(csv);
-
-
 }
 
+//csv is split into an array, a field for each line.
+//these arrays hold an array filled with words 
 function processData(csv) {
   //splits the file into lines using a regular expression
   let allTextLines = csv.split(/\r\n|\n/);
+  //final array is created
+  const csvArray = [];
 
-  const lines = [];
   for (let i = 0; i < allTextLines.length; i++) {
-    let data = allTextLines[i].split(',');
-    const tarr = [];
-    for (let j = 0; j < data.length; j++) {
-      tarr.push(data[j]);
+    let splitWords = allTextLines[i].split(',');
+    const singleLine = [];
+    for (let j = 0; j < splitWords.length; j++) {
+      singleLine.push(splitWords[j]);
     }
-    lines.push(tarr);
+    csvArray.push(singleLine);
   }
   //send array of csv to constructor to produce workout object
-  workout = new Workout(lines);
+  workout = new Workout(csvArray);
+  printWorkoutOverview(workout);
 
 }
 
