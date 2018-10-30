@@ -91,7 +91,7 @@ function processData(csv) {
 }
 
 
-
+//prints overview of workout to make sure creation is successful
 function printWorkoutOverview(workout) {
   console.log(workout)
   console.log(workout.getOverviewLabel());
@@ -174,10 +174,6 @@ function Workout(array) {
 
 
 }
-
-
-
-
 
 function errorHandler() {
   fileNameLabel.innerText = "Error loading CSV...";
