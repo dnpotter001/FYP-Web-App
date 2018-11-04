@@ -16,8 +16,8 @@ fileInput.addEventListener("change", e => {
 //listens for clicks, uses generate table function to produce 
 generateButton.addEventListener("click", e => {
   if (fileInput.value) {
-    generateTable(workout.getOverview(), workout.getOverviewLabel());
-    generateTable(workout.getIntervals(), workout.getIntervalsLabels());
+    generateTable(workout.workoutOverview, workout.workoutOverviewLabels);
+    generateTable(workout.intervals, workout.intervalsLabels);
   } else {
     fileNameLabel.innerText = "Upload a CSV first";
   }
@@ -80,10 +80,7 @@ function processData(csv) {
 //prints overview of workout to make sure creation is successful
 function printWorkoutOverview(workout) {
   console.log(workout)
-  console.log(workout.getOverviewLabel());
-  console.log(workout.getOverview());
-  console.log(workout.getIntervalsLabels()); 
-  console.log(workout.getIntervals());
+
   
   
 
@@ -145,19 +142,7 @@ function Workout(array) {
     this.intervals[i] = array[i + 20];
   }
 
-  //getters for obj
-  this.getOverview = function(){
-    return this.workoutOverview;
-  }
-  this.getOverviewLabel = function() {
-    return this.workoutOverviewLabels;
-  }
-  this.getIntervals = function(){
-    return this.intervals;
-  }
-  this.getIntervalsLabels = function(){
-    return this.intervalsLabels;
-  }
+  
 
 
 }
