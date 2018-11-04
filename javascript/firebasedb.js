@@ -5,9 +5,19 @@ push.addEventListener("click", e => {
 
 //test to realtime database
 let text = document.getElementById("dblink");
-const dblink = firebase.database().ref().child('text');
+const dblinkText = firebase.database().ref().child('text');
 
-dblink.on('value', snap => text.innerText = snap.val())
+dblinkText.on('value', snap => text.innerText = snap.val());
+
+dblinkObj = firebase.database().ref().child('Workouts');
+
+dblinkObj.on('value', snap => text.innerText = snap.val());
+dblinkObj.on('value', snap => console.log(snap.val()));
+
+//pushing object text
+
+
+//dblinkObj.
 
 
 function writeUserData(userID, name){
@@ -15,6 +25,8 @@ function writeUserData(userID, name){
     name: name
   });
 }
+
+
 
 
 
