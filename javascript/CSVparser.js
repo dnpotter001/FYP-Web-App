@@ -142,9 +142,6 @@ function Workout(array) {
     this.intervals[i] = array[i + 20];
   }
 
-  
-
-
 }
 
 function errorHandler() {
