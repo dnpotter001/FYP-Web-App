@@ -6,6 +6,7 @@ const canvas = document.getElementById("chart");
 canvas.height = 300;
 canvas.width = 300;
 
+
 //telling the browser that this is going to be a 2d canvas
 const ctx = canvas.getContext("2d");
 
@@ -17,15 +18,19 @@ function drawLine(ctx, startX, startY, endX, endY, colour){
   ctx.lineTo(endX, endY);
   ctx.stroke();
   ctx.restore();
-
 }
+
 
 function drawBar(ctx, upperLeftCornerX, upperLeftCornerY, width, height, colour){
   ctx.save();
   ctx.fillStyle = colour;
   ctx.fillRect(upperLeftCornerX, upperLeftCornerY, width, height);
+  ctx.fillText("test", upperLeftCornerX+(width/2)-6, upperLeftCornerY+-5 );
+  ctx.textAlign ="center";
+  ctx.font = "bold 12px Arial";
   ctx.restore();
 }
+
 
 var myVinyls = {
   "Classical music": 10,
@@ -61,15 +66,12 @@ let BarChart = function(options){
         this.options.gridColour
       );
 
-      //writing grid markers
-      
-      
+      //writing grid marker
       this.ctx.save();
       this.ctx.fillStyle = this.options.gridColour;
       this.ctx.font = "bold 10px Arial";
       this.ctx.fillText(gridValue, 10,gridY - 2);
       this.ctx.restore();
- 
       gridValue+=this.options.gridScale;
       
     }
@@ -93,12 +95,21 @@ let BarChart = function(options){
 
       barIndex++;
     }
+
+    //drawing series name
+    this.ctx.save();
+    this.ctx.textBaseLine ="bottom";
+    this.ctx.textAlign ="center";
+    this.fillStyle = "#000000";
+    this.ctx.font = "bold 16px Arial";
+    this.ctx.fillText(this.options.seriesName, this.canvas.width/2, this.canvas.height);
   }
 }
 
 let myBarchart = new BarChart(
   {
       canvas:canvas,
+      seriesName: "Vinyl Records",
       padding:10,
       gridScale:5,
       gridColour:"#eeeeee",
