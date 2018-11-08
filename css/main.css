@@ -1,3 +1,11 @@
+:root {
+  --offwhite:#D2FCFC ;
+  --dark:#48CDCD;
+  --accent:#9BF1F1 ;
+  --contrast: ;
+  --contast-accent: ;
+}
+
 
 /* mobile styling */
 body {
