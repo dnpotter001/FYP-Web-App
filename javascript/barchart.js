@@ -3,12 +3,31 @@ const button = document.getElementById("barchart");
 const canvas = document.getElementById("chart");
 
 //seting the canvas size
-canvas.height = 300;
-canvas.width = 300;
+
+function setupCanvas(canvas) {
+  // Get the device pixel ratio, falling back to 1.
+  var dpr = window.devicePixelRatio || 1;
+  // Get the size of the canvas in CSS pixels.
+  var rect = canvas.getBoundingClientRect();
+  // Give the canvas pixel dimensions of their CSS
+  // size * the device pixel ratio.
+  canvas.width = rect.width * dpr;
+  canvas.height = rect.height * dpr;
+  var ctx = canvas.getContext('2d');
+  // Scale all drawing operations by the dpr, so you
+  // don't have to worry about the difference.
+  ctx.scale(dpr, dpr);
+  return ctx;
+}
+
+var ctx = setupCanvas(canvas);
 
 
-//telling the browser that this is going to be a 2d canvas
-const ctx = canvas.getContext("2d");
+
+
+
+
+
 
 function drawLine(ctx, startX, startY, endX, endY, colour){
   ctx.save();
@@ -21,11 +40,11 @@ function drawLine(ctx, startX, startY, endX, endY, colour){
 }
 
 
-function drawBar(ctx, upperLeftCornerX, upperLeftCornerY, width, height, colour){
+function drawBar(ctx, upperLeftCornerX, upperLeftCornerY, width, height, colour, label){
   ctx.save();
   ctx.fillStyle = colour;
   ctx.fillRect(upperLeftCornerX, upperLeftCornerY, width, height);
-  ctx.fillText("test", upperLeftCornerX+(width/2)-6, upperLeftCornerY+-5 );
+  ctx.fillText(label, upperLeftCornerX+(width/2)-6, upperLeftCornerY+-5 );
   ctx.textAlign ="center";
   ctx.font = "bold 12px Arial";
   ctx.restore();
@@ -90,7 +109,8 @@ let BarChart = function(options){
         this.canvas.height - barHeight - this.options.padding,
         barSize,
         barHeight,
-        this.colours[barIndex%this.colours.length]
+        this.colours[barIndex%this.colours.length],
+        barIndex+1
       );
 
       barIndex++;
