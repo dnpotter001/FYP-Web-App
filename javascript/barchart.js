@@ -3,14 +3,12 @@ const button = document.getElementById("barchart");
 const canvas = document.getElementById("chart");
 
 //seting the canvas size
+// Get the device pixel ratio, falling back to 1.
+const dpr = window.devicePixelRatio || 1;
+// Give the canvas pixel dimensions of their CSS
+const rect = canvas.getBoundingClientRect();
 
 function setupCanvas(canvas) {
-  // Get the device pixel ratio, falling back to 1.
-  var dpr = window.devicePixelRatio || 1;
-  // Get the size of the canvas in CSS pixels.
-  var rect = canvas.getBoundingClientRect();
-  // Give the canvas pixel dimensions of their CSS
-  // size * the device pixel ratio.
   canvas.width = rect.width * dpr;
   canvas.height = rect.height * dpr;
   var ctx = canvas.getContext('2d');
@@ -21,12 +19,6 @@ function setupCanvas(canvas) {
 }
 
 var ctx = setupCanvas(canvas);
-
-
-
-
-
-
 
 
 function drawLine(ctx, startX, startY, endX, endY, colour){
@@ -80,7 +72,7 @@ let BarChart = function(options){
         this.ctx,
         0,
         gridY,
-        this.canvas.width,
+        canvasActualWidth,
         gridY,
         this.options.gridColour
       );

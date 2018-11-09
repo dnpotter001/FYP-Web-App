@@ -87,6 +87,7 @@ border-bottom: 2px #FAFFFD solid;
 .barchart{
   width: 500px;
   height:500px;
+  border: black 1px solid;
 }
 
 /*tablets */
