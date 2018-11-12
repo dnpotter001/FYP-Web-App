@@ -7,8 +7,8 @@ function setupCanvas(canvas) {
   let ctx = canvas.getContext('2d');
   let rect = canvas.getBoundingClientRect();
   //new scaling to improve sharpness
-  canvas.width = rect.width * (dpr+ 0.25);
-  canvas.height = rect.height * (dpr + 0.25);
+  canvas.width = rect.width * (dpr+ 1);
+  canvas.height = rect.height * (dpr + 1);
   ctx.scale(dpr, dpr);
   //old scaling
   // canvas.width = rect.width * dpr;
@@ -22,7 +22,7 @@ let value = [12,3,4,5,9,13];
 function drawLine(ctx, startX, startY, endX, endY, colour){
   ctx.save();
   ctx.strokeStyle = colour;
-  ctx.lineWidth = 2;
+  ctx.lineWidth = 4 ;
   ctx.beginPath();
   ctx.moveTo(startX,startY);
   ctx.lineTo(endX, endY);
@@ -33,7 +33,7 @@ function drawLine(ctx, startX, startY, endX, endY, colour){
 function drawBar(ctx, upperLX, upperLY, width, height, colour, label){
   ctx.save();
   ctx.fillStyle = colour;
-  ctx.font = "bold 20px Arial";
+  ctx.font = "bold 30px Arial";
   ctx.textAlign ="center";
 
   ctx.fillRect(upperLX, upperLY, width, height);
@@ -74,7 +74,7 @@ let BarChart = function(canvas, data, gridScale, seriesName, padding, barGap){
 
       //adds labels to lines
       this.ctx.save();
-      this.ctx.font = "bold 15px Arial";
+      this.ctx.font = "bold 30px Arial";
       console.log(gridValue);
       this.ctx.fillText(gridValue, 0, yHeight);
       this.ctx.restore();
@@ -107,7 +107,7 @@ let BarChart = function(canvas, data, gridScale, seriesName, padding, barGap){
     this.ctx.textBaseLine = "bottom";
     this.ctx.textAlign = "center";
     this.fillStyle = "#000000";
-    this.ctx.font= "bold 20px Arial";
+    this.ctx.font= "bold 40px Arial";
     this.ctx.fillText("Super chart", canvasW / 2, canvasH);
   }
 
