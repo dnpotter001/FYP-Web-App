@@ -3,14 +3,17 @@ const chartArea = document.getElementById("chart");
 
 
 function setupCanvas(canvas) {
-  var dpr = window.devicePixelRatio || 1;
-  var rect = canvas.getBoundingClientRect();
-  canvas.width = rect.width * dpr;
-  canvas.height = rect.height * dpr;
-  var ctx = canvas.getContext('2d');
-  //ctx.scale(dpr, dpr);
-  //ctx.translate(0.25, 0.25);
-
+  let dpr = window.devicePixelRatio || 1;
+  let ctx = canvas.getContext('2d');
+  let rect = canvas.getBoundingClientRect();
+  //new scaling to improve sharpness
+  canvas.width = rect.width * (dpr+ 0.25);
+  canvas.height = rect.height * (dpr + 0.25);
+  ctx.scale(dpr, dpr);
+  //old scaling
+  // canvas.width = rect.width * dpr;
+  // canvas.height = rect.height * dpr;
+  // ctx.scale(dpr, dpr);
   return ctx;
 }
 
@@ -39,11 +42,11 @@ function drawBar(ctx, upperLX, upperLY, width, height, colour, label){
 }
 
 let BarChart = function(canvas, data, gridScale, seriesName, padding, barGap){
- 
+
   this.canvas = canvas;
   this.ctx = setupCanvas(this.canvas);
-  
-  
+
+
   //sets the max value
   this.maxValue = 0;
   for(x in data){
@@ -57,7 +60,7 @@ let BarChart = function(canvas, data, gridScale, seriesName, padding, barGap){
 
   //function for drawing grid lines
   this.DrawGridLine = function(){
-    let gridValue = 0; 
+    let gridValue = 0;
     while(gridValue <= this.maxValue){
       let yHeight = (canvasH) * (1 - gridValue/this.maxValue) + padding;
       drawLine(
@@ -69,7 +72,7 @@ let BarChart = function(canvas, data, gridScale, seriesName, padding, barGap){
         "#000000"
       );
 
-      //adds labels to lines 
+      //adds labels to lines
       this.ctx.save();
       this.ctx.font = "bold 15px Arial";
       console.log(gridValue);
@@ -88,10 +91,10 @@ let BarChart = function(canvas, data, gridScale, seriesName, padding, barGap){
     for(x in data){
       drawBar(
         this.ctx,
-        barNo * barWidth + padding, 
-        (this.maxValue - data[x])*barIncrement +padding , 
-        barWidth - (barGap *2), 
-        data[x] *barIncrement, 
+        barNo * barWidth + padding,
+        (this.maxValue - data[x])*barIncrement +padding ,
+        barWidth - (barGap *2),
+        data[x] *barIncrement,
         getRandomColor(),
         data[x],
       );
@@ -111,7 +114,7 @@ let BarChart = function(canvas, data, gridScale, seriesName, padding, barGap){
 
 
 
-  
+
 }
 
 let chart = new BarChart(chartArea, value, 2, "chart", 25, 10);
