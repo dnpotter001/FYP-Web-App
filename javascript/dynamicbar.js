@@ -7,9 +7,9 @@ function setupCanvas(canvas) {
   let ctx = canvas.getContext('2d');
   let rect = canvas.getBoundingClientRect();
   //new scaling to improve sharpness
-  canvas.width = rect.width * (dpr+ 1);
-  canvas.height = rect.height * (dpr + 1);
-  ctx.scale(dpr, dpr);
+  canvas.width = rect.width * (2);
+  canvas.height = rect.height * (2);
+  ctx.scale(1, 1);
   //old scaling
   // canvas.width = rect.width * dpr;
   // canvas.height = rect.height * dpr;
