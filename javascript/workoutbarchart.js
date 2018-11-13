@@ -7,7 +7,7 @@ chartButton.addEventListener("click", () => {
     let chart = new BarChart(
       chartArea,
       workout,
-      25, // grid scale 
+      60, // grid scale 
       25, //padding 
       10, //bar gap
     );
@@ -38,17 +38,22 @@ function setupCanvas(canvas) {
 function getIntervalData(workout){
   let graphData = [];
   for(x in workout.intervals){
-    let intervals = workout.intervals[x]
-    console.log(workout.intervals[x]);
-    let timeArray = intervals[1].split(':');
-    console.log(timeArray);
+    let interval = workout.intervals[x]
+    let timeArray = interval[1].split(':');
     let totalSecond = (timeArray[0] * 60) + ((timeArray[1]/100) * 60);
-    console.log(totalSecond);
     graphData[x] = totalSecond;
   }
-
   console.log(graphData);
   return graphData;
+}
+
+function getBarLabels(workout){
+  let barLabels = [];
+  for(x in workout.intervals){
+    let interval = workout.intervals[x]
+    barLabels[x] = interval[1];
+  }
+  return barLabels;
 }
 
 function drawLine(ctx, startX, startY, endX, endY, colour){
@@ -67,17 +72,20 @@ function drawBar(ctx, upperLX, upperLY, width, height, colour, label){
   ctx.fillStyle = colour;
   ctx.font = "bold 30px Arial";
   ctx.textAlign ="center";
-
   ctx.fillRect(upperLX, upperLY, width, height);
   ctx.fillText(label, upperLX+(width/2), upperLY-5);
   ctx.restore();
 }
 
+
+/*-------------------GENERATE A NEW GRAPH OBJECT -------------------*/
 let BarChart = function(canvas, workout, gridScale, padding, barGap){
   //take parameters and sets up canvas and data
   this.canvas = canvas;
   this.ctx = setupCanvas(this.canvas);
   this.data = getIntervalData(workout);
+  this.barLabels = getBarLabels(workout);
+  console.log(this.barLabels);
 
   //sets the max value
   this.maxValue = 0;
@@ -108,7 +116,7 @@ let BarChart = function(canvas, workout, gridScale, padding, barGap){
       this.ctx.save();
       this.ctx.font = "bold 30px Arial";
       console.log(gridValue);
-      this.ctx.fillText(gridValue, 0, yHeight);
+      this.ctx.fillText(gridValue/60, 0, yHeight);
       this.ctx.restore();
 
       gridValue = gridValue + gridScale;
@@ -128,7 +136,7 @@ let BarChart = function(canvas, workout, gridScale, padding, barGap){
         barWidth - (barGap *2),
         this.data[x] *barIncrement,
         getRandomColor(),
-        this.data[x],
+        this.barLabels[x],
       );
       barNo++
     }
