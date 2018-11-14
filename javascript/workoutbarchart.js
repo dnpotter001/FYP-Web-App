@@ -1,14 +1,14 @@
 //gets the canvas from html file
 const chartArea = document.getElementById("chart");
-const chartButton = document.getElementById("generateChart"); 
+const chartButton = document.getElementById("generateChart");
 
 chartButton.addEventListener("click", () => {
   if(fileInput.value) {
     let chart = new BarChart(
       chartArea,
       workout,
-      60, // grid scale 
-      25, //padding 
+      60, // grid scale
+      25, //padding
       10, //bar gap
     );
 
@@ -95,7 +95,7 @@ let BarChart = function(canvas, workout, gridScale, padding, barGap){
     }
   }
 
-  let canvasW = this.canvas.width- padding;
+  let canvasW = this.canvas.width - padding;
   let canvasH = this.canvas.height - padding;
 
   //function for drawing grid lines
@@ -153,9 +153,9 @@ let BarChart = function(canvas, workout, gridScale, padding, barGap){
 }
 
 function getRandomColor() {
-  var letters = '0123456789ABCDEF';
-  var color = '#';
-  for (var i = 0; i < 6; i++) {
+  let letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
     color += letters[Math.floor(Math.random() * 16)];
   }
   return color;
