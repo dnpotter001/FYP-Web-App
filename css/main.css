@@ -77,6 +77,16 @@ header {
   padding: 2vw;
 }
 
+.bigButton{
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  background-color: var(--contrast);
+  border-bottom: 10px var(--contrast-accent) solid;
+  border-radius: 10px;
+  
+}
+
 #tables table {
   border: 1px solid black;
 }
