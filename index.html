@@ -3,24 +3,28 @@
 <head>
     <meta charset="utf-8" />
     <title>Welcome</title>
-    <link rel="stylesheet" type="text/css" media="screen" href="../css/main.css" />
-    
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+
 </head>
 
 <body>
   <div id="all">
   <header>
 
-    
+
     <span id="menuButton">&#9776</span>Welcome
 
   </header>
-  
+
   <nav id="navbar">
-         <a href="#">HOME</a>
+         <a href="#">FEED</a>
+         <a href="#">UPLOAD</a>
+         <a href="#">SQUADS</a>
+         <a href="#">STATS</a>
          <a href="#">PROFILE</a>
-         <a href="#">WORKOUTS</a>
-         <a href="#">SQUAD</a>
+         <a href="#">SETTINGS</a>
+         <a href="#">ABOUT</a>
+
   </nav>
 
   <section class="content">
@@ -28,14 +32,12 @@
 
     <h2>Upload a CSV</h2>
     <input type="file" id="csvFile" hidden="hidden">
-    <button type="button" id="uploadCSV">Uploads</button>
+    <button type="button" id="uploadCSV" class="bigButton">Uploads</button>
     <span id="fileNameLabel">No file chosen</span><br>
-    <button type="button" id="generateTable">Generate Table</button>
-    <button type="button" id="pushToFirebase">Push to firebase</button>
-    <button type="button" id="pullFromFirebase">Pull from firebase</button>
-    <button type="button" id="generateChart">Generate Bar Graph</button>
+    <button type="button" id="generateTable" class="bigButton">Generate Table</button>
+    <button type="button" id="generateChart" class="bigButton">Generate Bar Graph</button>
     <section id="tables">This is where the tables go</section>
-    
+
     <canvas class="barchart" id= "chart"></canvas>
   </section>
   </div>
@@ -43,10 +45,10 @@
 
 <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-database.js"></script>
-<script src="../javascript/main.js"></script>
-<script src="../javascript/firebasedb.js"></script>
-<script src="../javascript/CSVparser.js"></script>
-<script src="../javascript/workoutbarchart.js"></script>
+<script src="javascript/main.js"></script>
+<script src="javascript/firebasedb.js"></script>
+<script src="javascript/CSVparser.js"></script>
+<script src="javascript/workoutbarchart.js"></script>
 
 
 
