@@ -12,12 +12,6 @@
 
 <body class="grid">
 
-  <header id="header">
-    <div id="navbutton">&#9776 Welcome</div>
-
-    <div id="profileIcon" class="profileIcon"></div>
-  </header>
-
   <nav id="navbar">
     <a href="#">FEED</a>
     <a href="#">UPLOAD</a>
@@ -34,16 +28,29 @@
       No machines found!
     </div>
   </nav>
+  <header id="header">
+    <div id="navbutton">&#9776 Welcome</div>
+
+
+    <img src="img/avatar.png" class="avatar">
+  </header>
+
+
+
 
   <section class="content">
 
     <h2>Upload a CSV</h2>
     <input type="file" id="csvFile" hidden="hidden">
-    <button type="button" id="uploadCSV">Uploads</button>
-    <span id="fileNameLabel">No file chosen</span><br>
+    <button class="button dark" type="button" id="uploadCSV">Uploads</button>
+    <span id="fileNameLabel">No file chosen</span><br><br>
     <button type="button" id="generateTable">Generate Table</button>
     <button type="button" id="generateChart">Generate Bar Graph</button>
     <section id="tables">This is where the tables go</section>
+
+    <button class="button dark">Button</button>
+    <button class="button red">Button</button>
+    <button class="button contrast">Button</button>
     <!-- <canvas class="barchart" id= "chart"></canvas> -->
   </section>
 
