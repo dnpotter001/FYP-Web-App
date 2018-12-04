@@ -111,6 +111,7 @@ nav a:hover{
 }
 
 
+
 section{
   grid-area: content;
   padding: 10px;
@@ -118,6 +119,8 @@ section{
   white-space: nowrap;
   overflow:hidden;
 }
+
+/* button styling*/
 
 .button {
   padding: 15px 25px;
@@ -129,9 +132,7 @@ section{
   border-radius: 5px;
 }
 
-.button:active{ 
-  transform: translateY(3px)
-}
+.button:active{ transform: translateY(3px);}
 
 .dark{background: var(--dark); box-shadow: 0 6px var(--accent);}
 .dark:active{ box-shadow: 0 3px var(--accent); }
@@ -142,7 +143,12 @@ section{
 .red{background: var(--my-red); box-shadow: 0 6px var(--my-red-accent);}
 .red:active{ box-shadow: 0 3px var(--my-red-accent);} 
 
+.square{
+  width: 150px;
+  height: 150px;
+}
 
+/* table styling */
 
 #tables table {
   border: 1px solid black;
