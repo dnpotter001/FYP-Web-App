@@ -1,51 +1,60 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="utf-8" />
-    <title>Welcome</title>
-    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Welcome</title>
+  <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
 
 </head>
 
-<body>
+<body class="grid">
 
-  <header>
+  <header id="header">
+    <div id="navbutton">&#9776 Welcome</div>
 
-
-    <div id="menuButton">&#9776 Welcome</div>
-
+    <div id="profileIcon" class="profileIcon"></div>
   </header>
 
   <nav id="navbar">
-         <a href="#">FEED</a>
-         <a href="#">UPLOAD</a>
-         <a href="#">SQUADS</a>
-         <a href="#">STATS</a>
-         <a href="#">PROFILE</a>
-         <a href="#">SETTINGS</a>
-         <a href="#">ABOUT</a>
+    <a href="#">FEED</a>
+    <a href="#">UPLOAD</a>
+    <a href="#">SQUADS</a>
+    <a href="#">STATS</a>
+    <a href="#">PROFILE</a>
+    <a href="#">SETTINGS</a>
+    <a href="#">ABOUT</a>
+
+    <div class="machineCount">
+      <svg id="machineIndicator">
+        <circle id="erg-indicator" cx="5" cy="5" r="4" fill="red" />
+      </svg>
+      No machines found!
+    </div>
   </nav>
 
   <section class="content">
-    <p id="dblink"></p>
 
     <h2>Upload a CSV</h2>
     <input type="file" id="csvFile" hidden="hidden">
-    <button type="button" id="uploadCSV" class="bigButton">Uploads</button>
+    <button type="button" id="uploadCSV">Uploads</button>
     <span id="fileNameLabel">No file chosen</span><br>
-    <button type="button" id="generateTable" class="bigButton">Generate Table</button>
-    <button type="button" id="generateChart" class="bigButton">Generate Bar Graph</button>
+    <button type="button" id="generateTable">Generate Table</button>
+    <button type="button" id="generateChart">Generate Bar Graph</button>
     <section id="tables">This is where the tables go</section>
-
-    <canvas class="barchart" id= "chart"></canvas>
+    <!-- <canvas class="barchart" id= "chart"></canvas> -->
   </section>
+
+  <footer>
+    This is the footer
+  </footer>
+
 
 </body>
 
-<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
-<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-database.js"></script>
 <script src="javascript/main.js"></script>
-<script src="javascript/firebasedb.js"></script>
 <script src="javascript/CSVparser.js"></script>
 <script src="javascript/workoutbarchart.js"></script>
 

@@ -1,17 +1,8 @@
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyAasXA5ssvag-jcCMJQuk6UBc7HyBs-htc",
-    authDomain: "mileage-6d74b.firebaseapp.com",
-    databaseURL: "https://mileage-6d74b.firebaseio.com",
-    projectId: "mileage-6d74b",
-    storageBucket: "mileage-6d74b.appspot.com",
-    messagingSenderId: "742059742575"
-  };
-firebase.initializeApp(config);
+
 
 //all global variable are delcared
 //menu elements
-const menuButton = document.getElementById("menuButton");
+const navbutton = document.getElementById("navbutton");
 const navbar = document.getElementById("navbar");
 
 //other ui elements
@@ -22,17 +13,25 @@ const fileInput = document.getElementById("csvFile");
 const uploadButton = document.getElementById("uploadCSV");
 const fileNameLabel = document.getElementById("fileNameLabel");
 const generateButton = document.getElementById("generateTable");
-const pushButton = document.getElementById("pushToFirebase");
-const pullButton = document.getElementById("PullFromFirebase");
+
 
 
 //ojbects
 let workout = {};
 
-
-menuButton.addEventListener("click", () => {
+//open side menu
+navbutton.addEventListener("click", () => {
   console.log("toggled");
   navbar.classList.toggle("nav-open");
-  menuButton.classList.toggle("menu-open");
+  document.body.classList.toggle("menu-open")
 });
+
+//click anywhere to close side menu
+window.addEventListener("mouseup", (event) => {
+  if(event.target != navbar && event.target != navbutton ){
+    console.log("closing menu")
+    navbar.classList.remove("nav-open");
+    document.body.classList.remove("menu-open")
+  }
+})
 
