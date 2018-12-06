@@ -164,13 +164,13 @@ nav a:hover{
 }
 
 /* -------------------------feed styling-------------------------g*/
-.feedItem{
+.feed-item{
   display:grid;
   grid-template-columns: 50% 50%;
   grid-template-rows: 
-    60px
-    1fr
-    60px;
+    40px
+    180px
+    40px;
   grid-template-areas:
     "label label"
     "graph table"
@@ -178,19 +178,26 @@ nav a:hover{
   padding: 0;
 }
 
-.feed-item-label{
+.feed {
+  padding: 10px;
+ 
+}
+.label{
   grid-area: label;
   background: rgb(131, 41, 61);
 }
-.feed-graph{
+.graph{
   grid-area: graph; 
   background: rgb(180, 59, 59);
+  margin: 0;
+  overflow: hidden;
 }
-.feed-table{
+.table{
   grid-area: table;
   background: rgb(63, 155, 27);
+  margin: 0;
 }
-.feed-item-info{
+.info{
   grid-area: info;
   background: rgb(37, 24, 110);
 }
