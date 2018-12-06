@@ -124,9 +124,8 @@ nav a:hover{
 
 
 
-section{
+.content{
   grid-area: content;
-  padding: 10px;
   background-color: white;
   white-space: nowrap;
   overflow:hidden;
@@ -164,6 +163,39 @@ section{
   padding: 8px 12px;
 }
 
+/* -------------------------feed styling-------------------------g*/
+.feedItem{
+  display:grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 
+    60px
+    1fr
+    60px;
+  grid-template-areas:
+    "label label"
+    "graph table"
+    "info info";
+  padding: 0;
+}
+
+.feed-item-label{
+  grid-area: label;
+  background: rgb(131, 41, 61);
+}
+.feed-graph{
+  grid-area: graph; 
+  background: rgb(180, 59, 59);
+}
+.feed-table{
+  grid-area: table;
+  background: rgb(63, 155, 27);
+}
+.feed-item-info{
+  grid-area: info;
+  background: rgb(37, 24, 110);
+}
+
+
 /* table styling */
 
 #tables table {
@@ -189,7 +221,6 @@ footer{
 /* togglable classes */
 .nav-open {
   width: 50vw;
-
 }
 
 
