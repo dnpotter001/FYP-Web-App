@@ -24,7 +24,7 @@ body {
   grid-template-columns: 1fr;
   grid-template-rows: 
     60px
-    60px
+    40px
     1fr
     20vh;
   grid-template-areas:
@@ -126,9 +126,12 @@ nav a:hover{
 
 .content{
   grid-area: content;
+  display: inline-flex;
+  flex-direction: column;
   background-color: white;
   white-space: nowrap;
   overflow:hidden;
+  
 }
 
 /* -------------------------button stylin-------------------------g*/
@@ -141,6 +144,7 @@ nav a:hover{
   cursor: pointer;
   font-size: 24px;
   border-radius: 5px;
+  margin: 10px;
 }
 
 .button:active{ transform: translateY(3px);}
@@ -162,6 +166,10 @@ nav a:hover{
   font-size: 12px;
   padding: 8px 12px;
 }
+.wide{
+  width: 150px;
+}
+
 
 /* -------------------------feed styling-------------------------g*/
 .feed-item{
@@ -204,7 +212,15 @@ nav a:hover{
   grid-area: info;
   background: var(--offWhite);
 }
-
+/* -------------------------upload styling-------------------------g*/
+.button-box{
+  display: inline-flex;
+  justify-content: center;
+  width: 100%;
+  margin: 0;
+  padding:0px 0px;
+  
+}
 
 /* table styling */
 
@@ -218,9 +234,9 @@ nav a:hover{
 }
 
 .barchart{
-  width: 500px;
+  width: 100%;
   height:500px;
-  border: black 1px solid;
+ 
 }
 
 footer{

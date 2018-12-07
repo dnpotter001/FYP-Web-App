@@ -36,30 +36,31 @@
   </header>
 
   <section class="subheading">
-    Your feed: 
+    Upload a workout: <span id="fileNameLabel">No file chosen</span><br><br>
   </section>
 
 
 
 
   <section class="content">
-    <h2>Upload a CSV</h2>
     <input type="file" id="csvFile" hidden="hidden">
-    <button class="button dark" type="button" id="uploadCSV">Uploads</button>
-    <span id="fileNameLabel">No file chosen</span><br><br>
-    <button type="button" id="generateTable">Generate Table</button>
-    <button type="button" id="generateChart">Generate Bar Graph</button>
-    <section id="tables">This is where the tables go</section>
 
-    <button class="button dark">Button</button>
-    <button class="button red">Button</button>
-    <button class="button contrast">Button</button>
-    <br>
-    <br>
-    <button class="button dark square">Button</button>
-    <button class="button red square">Button</button>
-    <button class="button contrast square">Button</button>
-    <!-- <canvas class="barchart" id= "chart"></canvas> -->
+    <figure class="button-box">
+      <button class="button dark square" type="button" id="uploadCSV">
+        Upload <br>CSV
+      </button>
+
+      <button class="button contrast square" type="button" id="uploadErg">
+        ERG<br> Workout
+      </button>
+    </figure>
+    <figure class="button-box">
+      <button class="button dark wide" type="button" id="generateTable">Generate Table</button>
+      <button class="button contrast wide" type="button" id="generateChart">Generate Bar Graph</button>
+    </figure>
+    <section id="tables"></section>
+
+    <canvas class="barchart" id="chart"></canvas>
   </section>
 
   <footer>
@@ -71,6 +72,8 @@
 
 <script src="javascript/main.js"></script>
 <script src="javascript/CSVparser.js"></script>
+<script src="javascript/workoutbarchart.js"></script>
+
 
 
 
