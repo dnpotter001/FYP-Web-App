@@ -36,44 +36,40 @@
   </header>
 
 
-  <section class="content">
+  <section class="profile">
 
-      <div class="tab-bar">
+    <input name ="tabs" type="radio" id="tab1" checked="checked" class="tab feed" />
+    <label for="tab1" class="label">Feed</label>
+    <section class="tabPane feed">
 
-      </div>
+      <article class="feed-item">
 
-      <input name="tabs" type="radio" id="tab-1" checked="checked" class="input"/>
-      <label for="tab-1" class="label">Orange</label>
-      <section class="panel">
+        <div class="feed title">Sunday workout</div>
+        <figure class="feed graph">graph</figure>
+        <article class="feed table">table</article>
+        <div class="feed info">David Potter 08/07/1997</div>
 
-        <article class="feed-item">
+      </article>
 
-          <div class="feed label">Sunday workout</div>
-          <figure class="feed graph">graph</figure>
-          <article class="feed table">table</article>
-          <div class="feed info">David Potter 08/07/1997</div>
-
-        </article>
-
-      </section>
-
-      <input name="tabs" type="radio" id="tab-2" class="input"/>
-    	<label for="tab-2" class="label">Tangerine</label>
-      <section class="panel">
-
-        Your stats here
-
-      </section>
-
-
-      <input name="tabs" type="radio" id="tab-3" class="input"/>
-      <label for="tab-3" class="label">Clemantine</label>
-      <section class="panel">
-
-        settings
-
-      </section>
     </section>
+
+    <input name ="tabs" type="radio" id="tab2" class="tab stats" />
+    <label for="tab2" class="label">Statistics</label>
+    <section class="tabPane statistics">
+
+      Your stats here
+
+    </section>
+
+    <input name ="tabs" type="radio" id="tab3" class="tab settings" />
+    <label for="tab3" class="label">Settings</label>
+    <section class="tabPane settings">
+
+      settings
+
+    </section>
+
+  </section>
 
   <footer>
     This is the footer

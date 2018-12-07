@@ -194,7 +194,8 @@ nav a:hover{
   padding: 10px;
   border: 1px solid var(--accent);
 }
-.label{
+
+.title{
   grid-area: label;
   background: var(--accent);
   border-bottom: 2px solid var(--dark);
@@ -252,46 +253,52 @@ footer{
 }
 
 /* -------------------------profile styling-------------------------g*/
-.tab-bar{
-  display: flex;
-  flex-direction: row;
+.profile{
+  display:grid;
+  grid-template-columns: 33.33333% 33.3333% 33.3333%;
+  grid-template-rows:
+    40px
+    1fr;
+  grid-template-areas:
+    "tab1 tab2 tab3"
+    "tabPane tabPane tabPane";
+  background-color: white;
+  white-space: nowrap;
+  overflow:hidden;
+  margin: 0;
 }
 
-.panel {
-	display: none;
-}
-
-.tabs {
-	display: flex;
-	flex-wrap: wrap;
-	max-width: 700px;
-	background: #efefef;
-	box-shadow: 0 48px 80px -32px rgba(0,0,0,0.3);
-}
+#tab1 {grid-area: tab1;}
+#tab2 {grid-area: tab2;}
+#tab3 {grid-area: tab3;}
 
 .input {
 	display: none;
 }
+.tab {
+  display: none;
+}
+
 
 .label {
-	width: 100%;
-	padding: 20px 30px;
 	background: #e5e5e5;
 	cursor: pointer;
 	font-weight: bold;
-	font-size: 18px;
-	color: #7f7f7f;
-	transition: background 0.1s, color 0.1s;
+  font-size: 18px;
+  margin: 0;
 }
 
-.input:checked + .label {
-	background: #fff;
-	color: #000;
+.tabPane{
+  grid-area: tabPane;
+  display:none;
+  margin: 0;
 }
 
-.input:checked + .label + .panel {
-	display: block;
+.tab:checked + .label + .tabPane {
+  display:block;
 }
+
+
 
 
 
