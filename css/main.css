@@ -257,15 +257,28 @@ footer{
   display:grid;
   grid-template-columns: 33.33333% 33.3333% 33.3333%;
   grid-template-rows:
+    100px
     40px
     1fr;
   grid-template-areas:
+    "picture banner banner"
     "tab1 tab2 tab3"
     "tabPane tabPane tabPane";
   background-color: white;
   white-space: nowrap;
   overflow:hidden;
   margin: 0;
+}
+
+.profile-pic{
+  width: 100%;
+  grid-area: picture;
+  background: red;
+}
+
+.profile-banner{
+  grid-area: banner;
+  padding: 10px;
 }
 
 #tab1 {grid-area: tab1;}
@@ -288,11 +301,11 @@ footer{
   margin: 0;
   text-align: center;
   justify-content: center;
-  padding: 1 0px;
+  padding: 10px 0px;
 }
+
 .tab:checked +label{
-  background: var(--contrast);
-  border-bottom: 2px solid (var(--contrast-accent));
+  background: var(--accent);
   
 }
 

@@ -1,18 +1,11 @@
 const refreshFeed = document.getElementById("refresh-feed");
 
-refreshFeed.addEventListener("click", () => {
-  console.log("refresh");
-  GenerateFeedItem();
-});
-
-
-
 function GenerateFeedItem(){
   let feedItem = document.createElement('article');
   feedItem.className = 'feed-item';
 
   let feedLabel = document.createElement('div');
-  feedLabel.className = 'feed label';
+  feedLabel.className = 'feed title';
 
   let feedGraph = document.createElement('figure');
   feedGraph.className = 'feed graph' ;
@@ -27,7 +20,15 @@ function GenerateFeedItem(){
   feedItem.appendChild(feedGraph);
   feedItem.appendChild(feedTable);
   feedItem.appendChild(feedInfo);
-  document.getElementById('content').appendChild(feedItem);
+  document.getElementById('feed').appendChild(feedItem);
+  console.log('item generated');
 
 }
 
+GenerateFeedItem();
+GenerateFeedItem();
+
+refreshFeed.addEventListener("click", () => {
+  console.log("refresh");
+  GenerateFeedItem();
+});
