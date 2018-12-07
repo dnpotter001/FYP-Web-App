@@ -176,30 +176,33 @@ nav a:hover{
     "graph table"
     "info info";
   padding: 0;
+  margin: 10px;
 }
 
 .feed {
   padding: 10px;
- 
+  border: 1px solid var(--accent);
+
 }
 .label{
   grid-area: label;
-  background: rgb(131, 41, 61);
+  background: var(--accent);
+  border-bottom: 2px solid var(--dark);
 }
 .graph{
   grid-area: graph; 
-  background: rgb(180, 59, 59);
+  background: white;
   margin: 0;
   overflow: hidden;
 }
 .table{
   grid-area: table;
-  background: rgb(63, 155, 27);
+  background: white;
   margin: 0;
 }
 .info{
   grid-area: info;
-  background: rgb(37, 24, 110);
+  background: var(--offWhite);
 }
 
 
