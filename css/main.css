@@ -24,12 +24,10 @@ body {
   grid-template-columns: 1fr;
   grid-template-rows:
     60px
-    40px
     1fr
     20vh;
   grid-template-areas:
     "header "
-    "subheader"
     "content "
     "footer  ";
 
@@ -172,6 +170,11 @@ nav a:hover{
 
 
 /* -------------------------feed styling-------------------------g*/
+#refresh-feed{
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+}
 .feed-item{
   display:grid;
   grid-template-columns: 50% 50%;
@@ -190,7 +193,6 @@ nav a:hover{
 .feed {
   padding: 10px;
   border: 1px solid var(--accent);
-
 }
 .label{
   grid-area: label;
