@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Welcome</title>
+  <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+
+</head>
+
+<body class="grid">
+
+  <nav id="navbar">
+    <a href="index.html">FEED</a>
+    <a href="upload.html">UPLOAD</a>
+    <a href="#">SQUADS</a>
+    <a href="#">PROFILE</a>
+    <a href="#">SETTINGS</a>
+    <a href="#">ABOUT</a>
+
+    <div class="machineCount">
+      <svg id="machineIndicator">
+        <circle id="erg-indicator" cx="5" cy="5" r="4" fill="red" />
+      </svg>
+      No machines found!
+    </div>
+  </nav>
+
+  <header id="header">
+    <div id="navbutton">&#9776 Welcome</div>
+
+
+    <img src="img/avatar.png" class="avatar">
+  </header>
+
+  <section class="subheading">
+    Your feed: 
+  </section>
+
+
+
+
+  <section class="content">
+    <h2>Upload a CSV</h2>
+    <input type="file" id="csvFile" hidden="hidden">
+    <button class="button dark" type="button" id="uploadCSV">Uploads</button>
+    <span id="fileNameLabel">No file chosen</span><br><br>
+    <button type="button" id="generateTable">Generate Table</button>
+    <button type="button" id="generateChart">Generate Bar Graph</button>
+    <section id="tables">This is where the tables go</section>
+
+    <button class="button dark">Button</button>
+    <button class="button red">Button</button>
+    <button class="button contrast">Button</button>
+    <br>
+    <br>
+    <button class="button dark square">Button</button>
+    <button class="button red square">Button</button>
+    <button class="button contrast square">Button</button>
+    <!-- <canvas class="barchart" id= "chart"></canvas> -->
+  </section>
+
+  <footer>
+    This is the footer
+  </footer>
+
+
+</body>
+
+<script src="javascript/main.js"></script>
+<script src="javascript/CSVparser.js"></script>
+
+
+
+</html>
