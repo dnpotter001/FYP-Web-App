@@ -281,11 +281,19 @@ footer{
 
 
 .label {
-	background: #e5e5e5;
+	background: var(--offWhite);
 	cursor: pointer;
 	font-weight: bold;
-  font-size: 18px;
+  font-size: 20px;
   margin: 0;
+  text-align: center;
+  justify-content: center;
+  padding: 1 0px;
+}
+.tab:checked +label{
+  background: var(--contrast);
+  border-bottom: 2px solid (var(--contrast-accent));
+  
 }
 
 .tabPane{
